@@ -1,4 +1,4 @@
-import resolveFizzBuzz from ".";
+import resolveFizzBuzz from "./index";
 
 test("Le premier nombre est 1", () => {
   expect(resolveFizzBuzz(1)).toBe("1");
