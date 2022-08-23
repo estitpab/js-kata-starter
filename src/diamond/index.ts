@@ -6,18 +6,19 @@ export function generateRow(dimension: number, index: number):string[] {
   const starNumber = 1 + index * 2;
   const arrayOfStarsLength = new Array(starNumber);
   const arrayOfStars = arrayOfStarsLength.fill("x");
+  const numberOfSpacesBetween = (dimension - starNumber) / 2;
+  const arrayOfSpacesLength = new Array(numberOfSpacesBetween);
+  const arrayOfSpaces = arrayOfSpacesLength.fill(" ");
   if (dimension === starNumber) {
     return [...arrayOfStars];
   }
-  return [" ", ...arrayOfStars, " "];
+  return [...arrayOfSpaces, ...arrayOfStars, ...arrayOfSpaces];
 }
 
 export function generateDiamond(dimension: number): string[][] {
-  if (dimension === 3) {
-    const ligne1 = [" ", "x", " "];
-    const ligne2 = ["x", "x", "x"];
-    const ligne3 = [" ", "x", " "];
-    return [ligne1, ligne2, ligne3];
+  const result = [];
+  for (let i = 0; i < dimension; i++) {
+    result[i] = generateRow(dimension, i);
   }
-  return [["x"]];
+  return result;
 }
